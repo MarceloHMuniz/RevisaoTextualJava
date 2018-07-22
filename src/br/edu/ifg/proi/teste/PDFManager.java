@@ -1,6 +1,8 @@
 package br.edu.ifg.proi.teste;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
+
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.io.RandomAccessFile;
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -28,7 +30,7 @@ public class PDFManager {
        this.cosDoc = null;
        
        file = new File(filePath);
-       parser = new PDFParser(new RandomAccessFile(file,"r")); // update for PDFBox V 2.0
+       parser = new PDFParser(new RandomAccessFile(file,"r")); 
        
        parser.parse();
        cosDoc = parser.getDocument();
@@ -36,11 +38,8 @@ public class PDFManager {
        pdDoc = new PDDocument(cosDoc);
        pdDoc.getNumberOfPages();
        pdfStripper.setStartPage(1);
-       pdfStripper.setEndPage(10);
+       pdfStripper.setEndPage(pdDoc.getNumberOfPages());
        
-       // reading text from page 1 to 10
-       // if you want to get text from full pdf file use this code
-       // pdfStripper.setEndPage(pdDoc.getNumberOfPages());
        
        Text = pdfStripper.getText(pdDoc);
        return Text;
@@ -49,5 +48,24 @@ public class PDFManager {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+    
+    public int contaPg(){
+    	int resultado = 0;
+    	resultado = pdDoc.getNumberOfPages();
+    	return resultado;
+    }
+    
+    public int contaPalavras() {
+		int contadorDePalavras = 0;
+		
+		Scanner sc = new Scanner(Text);
+		sc.useDelimiter("[ ]");
+		while (sc.hasNext()) {
+			String proximaPalavra = sc.next();
+			if (proximaPalavra.length() > 0) contadorDePalavras++;
+			
+		}
+		return contadorDePalavras;
+	}
+ }
    
-}

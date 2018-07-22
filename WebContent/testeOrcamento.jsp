@@ -51,20 +51,27 @@ if(textualGramatical != null){
 }
 
 
-//out.println(abnt);
-//out.println(gramatical);
-//out.println(formatacao);
-//out.println(textualGramatical);
-//out.println("Preco paginas: " + valorPaginas);
-//out.println("Preco por Palavras: " +valorPalavra);
-//out.println("Preco por Laudas: " +valorLauda);
-
-
 
 %>
-<button> <%out.println("Revisao por Pagina: R$ " + valorPaginas);%> </button>
-<button> <%out.println("Revisao por Palavra: R$ " + valorPalavra);%> </button>
-<button> <%out.println("Revisao por Lauda: R$ " + valorLauda);%> </button>
+
+<form action="TestaBoleto.jsp" method="post">
+      <input type="hidden" name="valor" value="<%out.print(valorPaginas);%>" />
+      <button> <%out.println("Revisao por Pagina: R$ " + valorPaginas);%> </button>
+            
+    </form>
+    
+    <form action="TestaBoleto.jsp" method="post">
+      <input type="hidden" name="valor" value="<%out.print(valorPalavra);%>" />
+      <button> <%out.println("Revisao por Palavra: R$ " + valorPalavra);%> </button>
+            
+    </form>
+    
+    <form action="TestaBoleto.jsp" method="post">
+      <input type="hidden" name="valor" value="<%out.print(valorLauda);%>" />
+      <button> <%out.println("Revisao por Lauda: R$ " + valorLauda);%> </button>
+            
+    </form>
+
 
 </body>
 </html>

@@ -7,7 +7,6 @@
 <%@ page import="org.apache.commons.fileupload.servlet.*" %>
 <%@ page import="org.apache.commons.io.output.*" %>
 <%@ page import="br.edu.ifg.proi.teste.PDFManager" %>
-<%@ page import="br.edu.ifg.proi.teste.Sample" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -59,11 +58,9 @@
                 pdfManager.setFilePath(filePath + fileName);
                    
                 Texto = pdfManager.ToText();
-                
-                Sample sp = new Sample();
-                paginas = sp.contaPg(filePath + fileName);
-                
-                palavras = sp.contaPalavras(Texto);
+                               
+                paginas = pdfManager.contaPg();
+                palavras = pdfManager.contaPalavras();
                 
                 
             }
@@ -80,7 +77,7 @@
   <ul>
   <li><%out.println(" numero de paginas: " + paginas);%></li>
   <li><%out.println("numero de caracteres: " + Texto.length());%></li>
-  <li><%out.println("numero de caracteres: "+ palavras);%></li>
+  <li><%out.println("numero de palavras: "+ palavras);%></li>
             
 </ul>
 
