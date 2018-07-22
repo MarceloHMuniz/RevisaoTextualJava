@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifg.proi.dao.ClienteDAO;
+import br.edu.ifg.proi.dao.EnderecoDAO;
 import br.edu.ifg.proi.modelo.Cliente;
+import br.edu.ifg.proi.modelo.Endereco;
 
 
 
@@ -39,9 +41,23 @@ public class UsuarioCadastro extends HttpServlet {
 		String contato = request.getParameter("contato");
 		String email = request.getParameter("email");
 		
+		String logadouro = request.getParameter("logadouro");
+		String CEP = request.getParameter("CEP");
+		String cidade = request.getParameter("cidade");
+		String bairro = request.getParameter("bairro");
+		String UF = request.getParameter("UF");
+		
 		
 		
 		if (senha.equals(sconf)) {
+			
+			Endereco endereco = new Endereco();
+			endereco.setBairro(bairro);
+			endereco.setCEP(CEP);
+			endereco.setCidade(cidade);
+			endereco.setLogradouro(logadouro);
+			endereco.setUF(UF);
+			
 			Cliente novo = new Cliente();
 			novo.setNome(nome);
 			novo.setCpf(cpf);
@@ -50,10 +66,15 @@ public class UsuarioCadastro extends HttpServlet {
 			novo.setContato(contato);
 			novo.setEmail(email);
 			
+			
+			novo.setEndereco(endereco);
+			
 
 			try {
 				ClienteDAO dao = new ClienteDAO();
-				dao.create(novo);
+				EnderecoDAO daoE = new EnderecoDAO();
+				int temp = daoE.create(endereco);
+				dao.create(novo, temp);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

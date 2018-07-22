@@ -34,8 +34,12 @@ Cliente c = (Cliente)session.getAttribute("usuarioAutenticado");
       <input type="text" name="usuario" disabled="disabled" value=" <%         
             out.println(c.getUsuario());
             %>">
-      <input type="password" name="senha" maxlength="20" >
-      <input type="password" name="confirma_senha" maxlength="20">
+            
+            <input type="text" name="endereco" value=" Endereco">
+            
+           
+      <input type="password" name="senha" maxlength="20" placeholder="insira a senha">
+      <input type="password" name="confirma_senha" maxlength="20" placeholder="confirme a senha">
      
       <button> Alterar </button>
       

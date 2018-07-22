@@ -9,6 +9,7 @@ public class Cliente {
 	private String email;
 	private String usuario;
 	private String senha;
+	private Endereco endereco;
 	//private List<Comprovante>
 	
 	public Cliente() {
@@ -25,6 +26,14 @@ public class Cliente {
 	public Long getId() {
 		return id;
 	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}

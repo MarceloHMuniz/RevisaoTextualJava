@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifg.proi.dao.ClienteDAO;
 import br.edu.ifg.proi.modelo.Cliente;
+import br.edu.ifg.proi.modelo.Endereco;
 
 /**
  * Servlet implementation class AlterarClienteServlet
@@ -39,6 +40,12 @@ public class AlterarClienteServlet extends HttpServlet {
 		String contato = request.getParameter("contato");
 		String email = request.getParameter("email");
 		
+		String logadouro = request.getParameter("logadouro");
+		String CEP = request.getParameter("CEP");
+		String cidade = request.getParameter("cidade");
+		String bairro = request.getParameter("bairro");
+		String UF = request.getParameter("UF");
+		
 		
 		
 		if (senha.equals(sconf)) {
@@ -49,6 +56,15 @@ public class AlterarClienteServlet extends HttpServlet {
 			novo.setUsuario(usuario);
 			novo.setContato(contato);
 			novo.setEmail(email);
+			
+			Endereco endereco = new Endereco();
+			endereco.setBairro(bairro);
+			endereco.setCEP(CEP);
+			endereco.setCidade(cidade);
+			endereco.setLogradouro(logadouro);
+			endereco.setUF(UF);
+			
+			novo.setEndereco(endereco);
 			
 
 			try {

@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+
 </head>
 
 
@@ -54,11 +54,11 @@ Beneficiario beneficiario = Beneficiario.novoBeneficiario()
 .comNossoNumero("9000206");  
 
 Endereco enderecoPagador = Endereco.novoEndereco()
-.comLogradouro("Av dos testes, 111 apto 333")  
-.comBairro("Bairro Teste")  
-.comCep("01234-111")  
-.comCidade("Goiania")  
-.comUf("GO");  
+.comLogradouro(temporario.getEndereco().getLogradouro())
+.comBairro(temporario.getEndereco().getBairro())  
+.comCep(temporario.getEndereco().getCEP())  
+.comCidade(temporario.getEndereco().getCidade())  
+.comUf(temporario.getEndereco().getUF());  
 
 //Quem paga o boleto
 Pagador pagador = Pagador.novoPagador()  
@@ -85,7 +85,7 @@ gerador.geraPDF("D:/BancoDBrasild22.pdf");
 
 GeradorDeBoletoHTML gerador2 = new GeradorDeBoletoHTML(boleto);
 gerador2.geraHTML(response.getWriter(), request);
-
+ 
 %>
 
 
