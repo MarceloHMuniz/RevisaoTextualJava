@@ -2,6 +2,7 @@ package br.edu.ifg.proi.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -88,6 +89,38 @@ public class ServicoDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+
+
+	public Servico consulta(String nome) {
+		Servico sv = null;
+		try {
+
+			String sql = "Select * FROM servico WHERE descricao = ? ;";
+
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			stmt.setString(1, nome);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				sv = new Servico();
+				sv.setCaracteristicas(rs.getString("caracteristicas"));
+				sv.setDescricao(rs.getString("descricao"));
+				sv.setFormasCobranca(rs.getString("formasCobranca"));
+				String vl = rs.getString("formasCobranca");
+				int valor = Integer.parseInt(vl);
+				sv.setValor(valor);
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+
+		return sv;
+
 	}
 
 }

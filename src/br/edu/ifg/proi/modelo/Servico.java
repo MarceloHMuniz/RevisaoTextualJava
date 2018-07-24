@@ -30,6 +30,13 @@ public class Servico {
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+	@Override
+	public String toString() {
+		return "Servico [getDescricao()=" + getDescricao()
+				+ ", getCaracteristicas()=" + getCaracteristicas()
+				+ ", getFormasCobranca()=" + getFormasCobranca()
+				+ ", getValor()=" + getValor() + "]";
+	}
 	
 	
 

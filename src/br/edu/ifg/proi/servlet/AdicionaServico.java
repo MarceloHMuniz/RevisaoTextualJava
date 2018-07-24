@@ -47,10 +47,13 @@ public class AdicionaServico extends HttpServlet {
 				novo.setFormasCobranca(cobranca);
 				novo.setValor(valor);
 				
+				request.getRequestDispatcher("PaginaServico.jsp").forward(request, response);
+				
 				dao.create(novo);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				request.getRequestDispatcher("erro.jsp");
 			}
 				} 
 
