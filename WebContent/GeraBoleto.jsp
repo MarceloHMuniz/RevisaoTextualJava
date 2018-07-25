@@ -1,3 +1,4 @@
+<%@page import="br.edu.ifg.proi.servlet.UsuarioCadastro"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
@@ -13,7 +14,8 @@
       <%@ page import="br.com.caelum.stella.boleto.Beneficiario" %>
       <%@page import="br.edu.ifg.proi.modelo.Cliente"%> 
       <%@page import="java.util.Date"%> 
-      <%@page import="java.util.Calendar"%>    
+      <%@page import="java.util.Calendar"%>  
+       <%@page import="java.util.Random"%>  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -81,7 +83,20 @@ Boleto boleto = Boleto.novoBoleto()
 GeradorDeBoleto gerador = new GeradorDeBoleto(boleto);  
 
 // Para gerar um boleto em PDF  
-gerador.geraPDF("D:/BancoDBrasild22.pdf");    
+
+
+   
+        Random radom  = new Random();
+        int numeroTmp = 0;
+        for(int i=0;i<10; i++) {
+            numeroTmp=radom.nextInt(99999);
+        }
+    
+
+
+gerador.geraPDF("D:/" + "Boleto"+ temporario.getNome() +  numeroTmp +".pdf");    
+
+//request.getRequestDispatcher("menu_cliente.jsp").forward(request, response);
 
 GeradorDeBoletoHTML gerador2 = new GeradorDeBoletoHTML(boleto);
 gerador2.geraHTML(response.getWriter(), request);

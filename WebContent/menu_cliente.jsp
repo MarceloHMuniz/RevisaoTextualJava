@@ -83,5 +83,9 @@ out.println(c.getEmail());
 
 <INPUT  TYPE="button" VALUE ="Voltar" onClick="history.go(-1)"/>
 
+<a href="C:/Users/Desktop Marcelo/workspaceRevisaoTextual/RevisaoTextualJavaWeb/WebContent/">link</a>
+
+
+<%@ include file="rodape.jsp"%>
 </body>
 </html>
