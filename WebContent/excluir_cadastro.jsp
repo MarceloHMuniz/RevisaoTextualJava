@@ -15,7 +15,6 @@ Cliente c = (Cliente)session.getAttribute("usuarioAutenticado");
 ClienteDAO dao = new ClienteDAO();
 dao.delete(c);
 %>
-Cadastro excluido!!!
 
 <td><a HREF="login.html">Voltar</a></td>
 

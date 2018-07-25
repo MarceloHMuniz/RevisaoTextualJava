@@ -82,7 +82,7 @@
             
 </ul>
 
-<form method="post" action="testeOrcamento.jsp">
+<form method="post" action="orcamento.jsp">
 <fieldset>
   <legend>Escolha os tipos de Revisao</legend>
    <div>

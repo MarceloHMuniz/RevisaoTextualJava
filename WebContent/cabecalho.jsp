@@ -40,7 +40,7 @@ li a:hover {
   <li><a href="#news">Serviços</a></li>
   <li><a href="#contact">Central do cliente</a></li>
   <li><a href="#about">Contato</a></li>
-  <li><a href="orcamento.jsp">Fazer orcamento</a></li>
+  <li><a href="telaUpload.jsp">Fazer orcamento</a></li>
   <li><a href="#usuario"><%         
             Cliente temporario = (Cliente)session.getAttribute("usuarioAutenticado");
             //String nome = temporario.getUsuario();

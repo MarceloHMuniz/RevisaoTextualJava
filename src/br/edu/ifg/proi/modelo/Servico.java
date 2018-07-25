@@ -5,7 +5,10 @@ public class Servico {
 	private String descricao;
 	private String caracteristicas;
 	private String formasCobranca;
-	private float valor;
+	private float valorPg;
+	private float valorLd;
+	private float valorPl;
+	
 	public String getDescricao() {
 		return descricao;
 	}
@@ -24,19 +27,35 @@ public class Servico {
 	public void setFormasCobranca(String formasCobranca) {
 		this.formasCobranca = formasCobranca;
 	}
-	public float getValor() {
-		return valor;
+	public float getValorPg() {
+		return valorPg;
 	}
-	public void setValor(float valor) {
-		this.valor = valor;
+	public void setValorPg(float valorPg) {
+		this.valorPg = valorPg;
+	}
+	public float getValorLd() {
+		return valorLd;
+	}
+	public void setValorLd(float valorLd) {
+		this.valorLd = valorLd;
+	}
+	public float getValorPl() {
+		return valorPl;
+	}
+	public void setValorPl(float valorPl) {
+		this.valorPl = valorPl;
 	}
 	@Override
 	public String toString() {
 		return "Servico [getDescricao()=" + getDescricao()
 				+ ", getCaracteristicas()=" + getCaracteristicas()
 				+ ", getFormasCobranca()=" + getFormasCobranca()
-				+ ", getValor()=" + getValor() + "]";
+				+ ", getValorPg()=" + getValorPg() + ", getValorLd()="
+				+ getValorLd() + ", getValorPl()=" + getValorPl() + "]";
 	}
+
+	
+	
 	
 	
 

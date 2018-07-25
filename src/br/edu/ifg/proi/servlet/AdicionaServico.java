@@ -32,9 +32,13 @@ public class AdicionaServico extends HttpServlet {
 		String descricao = request.getParameter("descricao");
 		String caracteristicas = request.getParameter("caracteristicas");
 		String cobranca = request.getParameter("cobranca");
-		String preco = request.getParameter("preco");
+		String preco = request.getParameter("valorPg");
+		String preco2 = request.getParameter("valorLd");
+		String preco3 = request.getParameter("valorPl");
 		
-		float valor = Float.parseFloat(preco);
+		float valorPg = Float.parseFloat(preco);
+		float valorLd = Float.parseFloat(preco2);
+		float valorPl = Float.parseFloat(preco3);
 		
 		
 				
@@ -45,9 +49,11 @@ public class AdicionaServico extends HttpServlet {
 				novo.setCaracteristicas(caracteristicas);
 				novo.setDescricao(descricao);
 				novo.setFormasCobranca(cobranca);
-				novo.setValor(valor);
+				novo.setValorPg(valorPg);
+				novo.setValorLd(valorLd);
+				novo.setValorPl(valorPl);
 				
-				request.getRequestDispatcher("PaginaServico.jsp").forward(request, response);
+				request.getRequestDispatcher("paginaServico.jsp").forward(request, response);
 				
 				dao.create(novo);
 			} catch (SQLException e) {

@@ -23,8 +23,8 @@ public class ServicoDAO {
 	public void criarTabela() throws SQLException{
 		try {
 			String sql = "CREATE TABLE IF NOT EXISTS servico (" + "id BIGINT NOT NULL AUTO_INCREMENT,"
-					+ "descricao TEXT," + "caracteristicas TEXT," + "formasCobranca VARCHAR(255)," + "valor DECIMAL," 
-					+ "primary key (id)" + ");";
+					+ "descricao TEXT," + "caracteristicas TEXT," + "formasCobranca VARCHAR(255)," + "valorPg DECIMAL," 
+					+ "valorLd DECIMAL," + "valorPl DECIMAL," + "primary key (id)" + ");";
 
 			// Criando o statement
 			Statement st = connection.createStatement();
@@ -40,7 +40,7 @@ public class ServicoDAO {
 	}
 	
 	public void create(Servico servico) {
-		String sql = "insert into servico " + "(descricao,caracteristicas,formasCobranca,valor)" + " values (?,?,?,?)";
+		String sql = "insert into servico " + "(descricao,caracteristicas,formasCobranca,valorPg, valorLd, valorPl)" + " values (?,?,?,?,?,?)";
 		try {
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql);
@@ -49,7 +49,9 @@ public class ServicoDAO {
 			stmt.setString(1, servico.getDescricao());
 			stmt.setString(2, servico.getCaracteristicas());
 			stmt.setString(3, servico.getFormasCobranca());
-			stmt.setFloat(4, servico.getValor());
+			stmt.setFloat(4, servico.getValorPg());
+			stmt.setFloat(5, servico.getValorLd());
+			stmt.setFloat(6, servico.getValorPl());
 			
 
 			// executa
@@ -62,15 +64,17 @@ public class ServicoDAO {
 
 	public void update(Servico servico) {
 		try {
-			String sql = "UPDATE servico SET descricao = ?, caracteristicas = ?, formasCobranca = ?, valor = ? WHERE descricao = ?;";
+			String sql = "UPDATE servico SET descricao = ?, caracteristicas = ?, formasCobranca = ?, valorPg = ?, valorLd = ?, valorPl = ? WHERE descricao = ?;";
 
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			stmt.setString(1, servico.getDescricao());
 			stmt.setString(2, servico.getCaracteristicas());
 			stmt.setString(3, servico.getFormasCobranca());
-			stmt.setFloat(4, servico.getValor());
-			stmt.setString(5, servico.getDescricao());
+			stmt.setFloat(4, servico.getValorPg());
+			stmt.setFloat(5, servico.getValorLd());
+			stmt.setFloat(6, servico.getValorPl());
+			stmt.setString(7, servico.getDescricao());
 
 			stmt.execute();
 			stmt.close();
@@ -110,9 +114,15 @@ public class ServicoDAO {
 				sv.setCaracteristicas(rs.getString("caracteristicas"));
 				sv.setDescricao(rs.getString("descricao"));
 				sv.setFormasCobranca(rs.getString("formasCobranca"));
-				String vl = rs.getString("formasCobranca");
+				String vl = rs.getString("valorPg");
+				String v2 = rs.getString("valorLd");
+				String v3 = rs.getString("valorPl");
 				int valor = Integer.parseInt(vl);
-				sv.setValor(valor);
+				int valor2 = Integer.parseInt(v2);
+				int valor3 = Integer.parseInt(v3);
+				sv.setValorPg(valor);
+				sv.setValorLd(valor2);
+				sv.setValorPl(valor3);
 			}
 
 		} catch (Exception e) {
